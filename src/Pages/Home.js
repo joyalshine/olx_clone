@@ -12,7 +12,7 @@ function Home(props) {
       <Header />
       <Banner />
       <Posts />
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

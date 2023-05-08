@@ -1,10 +1,10 @@
 .recent {
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 2.5rem;
 }
 
 .mainPostersDiv {
   background-color: #ebeeef;
-  padding: 1rem;
+  padding: 0rem 0.5rem 1.5rem 0.5rem;
   margin: 3rem 1.5rem 1rem 1.5rem;
   border-radius: 6px;
 }
@@ -17,82 +17,4 @@
 .cardRow {
   display: flex;
   justify-content: space-evenly;
-}
-.card {
-  border-radius: 5px;
-  padding: 0;
-}
-
-.imgDisplay {
-  width: -webkit-fill-available;
-  max-width: 200px;
-}
-.imgDiv {
-  display: flex;
-  justify-content: center;
-  padding: 13px;
-}
-.price {
-  font-weight: 700;
-  font-size: 20px;
-  color: rgba(0, 47, 52, 1);
-}
-.detail1 {
-  font-size: 14px;
-  margin: 2px 0px 0px;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  color: rgba(0, 47, 52, 1);
-  margin-bottom: 0;
-}
-.detail2 {
-  font-weight: 400;
-  overflow: hidden;
-  font-size: 13px;
-  text-overflow: ellipsis;
-}
-.detailsDiv {
-  padding: 10px;
-  border-left-style: solid;
-  border-left-width: 5px;
-  border-left-color: #ffce32;
-  border-bottom-left-radius: 5px;
-}
-.duration {
-  font-size: 11px;
-  color: #696969;
-  font-weight: 400;
-}
-.durationDiv {
-  display: flex;
-  justify-content: end;
-}
-.details2Div {
-  max-width: 240px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.featuredDiv {
-  position: absolute;
-  background-color: #ffce32;
-  padding: 2px;
-  font-size: 11px;
-  font-weight: 700;
-  border-radius: 2px;
-  left: 8px;
-  top: 8px;
-}
-.likeDiv {
-  position: absolute;
-  background-color: #fff;
-  border-radius: 21px;
-  width: 35px;
-  height: 35px;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  flex-wrap: wrap;
-  right: 10px;
 }

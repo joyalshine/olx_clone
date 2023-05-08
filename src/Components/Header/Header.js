@@ -34,11 +34,11 @@ function Header() {
           <Arrow></Arrow>
         </div>
         <div className="loginPage">
-          <span>Login</span>
+          <span style={{ fontWeight: "700" }}>Login</span>
           <hr />
         </div>
 
-        <div className="sellMenu">
+        <div className="sellMenu" style={{ marginRight: "10px" }}>
           <SellButton></SellButton>
           <div className="sellMenuContent">
             <SellButtonPlus></SellButtonPlus>
