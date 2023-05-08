@@ -1,14 +1,60 @@
-import React from 'react';
+import React, { useState, useContext } from "react";
 
-import Logo from '../../olx-logo.png';
-import './Signup.css';
+import Logo from "../../olx-logo.png";
+import "./Signup.css";
+
+import { useHistory } from "react-router-dom";
+import FirebaseContext from "../../contexts/firebaseContext";
 
 export default function Signup() {
+  const Firebase = useContext(FirebaseContext);
+  const history = useHistory();
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneno, setPhoneno] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    Firebase.auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        var user = userCredential.user;
+        user
+          .updateProfile({
+            displayName: username,
+          })
+          .then(() => {
+            Firebase.firestore()
+              .collection("Users")
+              .add({
+                id: user.uid,
+                username: username,
+                phone: phoneno,
+              })
+              .then(() => {
+                history.push("/login");
+              });
+          })
+          .catch((error) => {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            console.log(errorCode);
+            console.log(errorMessage);
+          });
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(errorCode);
+        console.log(errorMessage);
+      });
+  };
   return (
     <div>
       <div className="signupParentDiv">
         <img width="200px" height="200px" src={Logo}></img>
-        <form>
+        <form onSubmit={handleSubmit}>
           <label htmlFor="fname">Username</label>
           <br />
           <input
@@ -16,7 +62,7 @@ export default function Signup() {
             type="text"
             id="fname"
             name="name"
-            defaultValue="John"
+            onChange={(e) => setUsername(e.target.value)}
           />
           <br />
           <label htmlFor="fname">Email</label>
@@ -26,7 +72,7 @@ export default function Signup() {
             type="email"
             id="fname"
             name="email"
-            defaultValue="John"
+            onChange={(e) => setEmail(e.target.value)}
           />
           <br />
           <label htmlFor="lname">Phone</label>
@@ -36,7 +82,7 @@ export default function Signup() {
             type="number"
             id="lname"
             name="phone"
-            defaultValue="Doe"
+            onChange={(e) => setPhoneno(e.target.value)}
           />
           <br />
           <label htmlFor="lname">Password</label>
@@ -46,13 +92,13 @@ export default function Signup() {
             type="password"
             id="lname"
             name="password"
-            defaultValue="Doe"
+            onChange={(e) => setPassword(e.target.value)}
           />
           <br />
           <br />
           <button>Signup</button>
         </form>
-        <a>Login</a>
+        <a onClick={() => history.push("/login")}>Login</a>
       </div>
     </div>
   );
