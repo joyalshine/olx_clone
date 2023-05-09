@@ -7,6 +7,7 @@ import Signup from "./Pages/Signup";
 import { Route } from "react-router-dom/cjs/react-router-dom.min";
 import AuthContext from "./contexts/AuthContext";
 import FirebaseContext from "./contexts/firebaseContext";
+import Create from "./Components/Create/Create";
 
 function App() {
   const { setUser } = useContext(AuthContext);
@@ -27,6 +28,9 @@ function App() {
       </Route>
       <Route path="/signup">
         <Signup />
+      </Route>
+      <Route path="/create">
+        <Create />
       </Route>
     </div>
   );
