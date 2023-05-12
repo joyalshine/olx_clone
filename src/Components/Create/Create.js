@@ -15,9 +15,16 @@ const Create = () => {
   const [category, setCategory] = useState("");
   const [price, setPrice] = useState("");
   const [file, setFile] = useState("");
+  const [desc, setDesc] = useState("");
+  const [title, setTitle] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!user) {
+      alert("Login First");
+      return;
+    }
 
     let uploadTask = Firebase.storage()
       .ref(`/postImages/${Date.now() + "_" + user.uid}`)
@@ -41,7 +48,10 @@ const Create = () => {
               id: user.uid,
               Name: name,
               Category: category,
+              Title: title,
+              Desc: desc,
               Price: price,
+              Featured: user.Premium ? true : false,
               imgURL: downloadURL,
               timestamp: Date.now(),
             })
@@ -91,6 +101,26 @@ const Create = () => {
               onChange={(e) => setPrice(e.target.value)}
             />
             <br />
+            <label htmlFor="fname">Title</label>
+            <br />
+            <input
+              className="input"
+              type="text"
+              id="fname"
+              name="Price"
+              onChange={(e) => setTitle(e.target.value)}
+            />
+            <br />
+            <label htmlFor="fname">Description</label>
+            <br />
+            <input
+              className="input"
+              type="text"
+              id="fname"
+              name="Price"
+              onChange={(e) => setDesc(e.target.value)}
+            />
+            <br />
             <br />
             <img
               alt="Posts"
@@ -98,6 +128,7 @@ const Create = () => {
               height="200px"
               src={file ? URL.createObjectURL(file) : ""}
             ></img>
+            <br />
             <br />
             <input type="file" onChange={(e) => setFile(e.target.files[0])} />
             <br />

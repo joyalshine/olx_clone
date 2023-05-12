@@ -30,6 +30,10 @@ function Header() {
     history.push("/login");
   };
 
+  const handleCreate = () => {
+    history.push("/create");
+  };
+
   return (
     <div className="headerParentDiv">
       <div className="headerChildDiv">
@@ -78,7 +82,11 @@ function Header() {
           <hr />
         </div>
 
-        <div className="sellMenu" style={{ marginRight: "10px" }}>
+        <div
+          className="sellMenu"
+          style={{ marginRight: "10px" }}
+          onClick={handleCreate}
+        >
           <SellButton></SellButton>
           <div className="sellMenuContent">
             <SellButtonPlus></SellButtonPlus>

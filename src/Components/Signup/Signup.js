@@ -9,6 +9,7 @@ import FirebaseContext from "../../contexts/firebaseContext";
 export default function Signup() {
   const Firebase = useContext(FirebaseContext);
   const history = useHistory();
+  const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [phoneno, setPhoneno] = useState("");
@@ -22,15 +23,18 @@ export default function Signup() {
         var user = userCredential.user;
         user
           .updateProfile({
-            displayName: username,
+            displayName: name,
           })
           .then(() => {
             Firebase.firestore()
               .collection("Users")
               .add({
                 id: user.uid,
+                name: name,
                 username: username,
                 phone: phoneno,
+                Premium: false,
+                AccCreation: Date.now(),
               })
               .then(() => {
                 history.push("/login");
@@ -55,6 +59,16 @@ export default function Signup() {
       <div className="signupParentDiv">
         <img width="200px" height="200px" src={Logo}></img>
         <form onSubmit={handleSubmit}>
+          <label htmlFor="fname">Name</label>
+          <br />
+          <input
+            className="input"
+            type="text"
+            id="fname"
+            name="name"
+            onChange={(e) => setName(e.target.value)}
+          />
+          <br />
           <label htmlFor="fname">Username</label>
           <br />
           <input

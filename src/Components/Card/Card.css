@@ -2,11 +2,16 @@
   border-radius: 5px;
   padding: 0;
   margin-bottom: 12px;
+  justify-content: space-between;
+}
+.card:hover {
+  cursor: pointer;
 }
 
 .imgDisplay {
   width: -webkit-fill-available;
   max-width: 200px;
+  max-height: 200px;
 }
 .imgDiv {
   display: flex;
@@ -69,11 +74,14 @@
   position: absolute;
   background-color: #fff;
   border-radius: 21px;
-  width: 35px;
-  height: 35px;
+  width: 40px;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-content: center;
   flex-wrap: wrap;
   right: 10px;
+}
+.likeDiv:hover {
+  cursor: pointer;
 }

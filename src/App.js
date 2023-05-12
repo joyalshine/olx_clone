@@ -8,6 +8,7 @@ import { Route } from "react-router-dom/cjs/react-router-dom.min";
 import AuthContext from "./contexts/AuthContext";
 import FirebaseContext from "./contexts/firebaseContext";
 import Create from "./Components/Create/Create";
+import ViewPost from "./Pages/ViewPost";
 
 function App() {
   const { setUser } = useContext(AuthContext);
@@ -31,6 +32,9 @@ function App() {
       </Route>
       <Route path="/create">
         <Create />
+      </Route>
+      <Route path="/view/:uid">
+        <ViewPost />
       </Route>
     </div>
   );
